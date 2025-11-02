@@ -6,6 +6,14 @@ This project is built purely with **HTML, CSS, and vanilla JavaScript**, with no
 
 ---
 
+## 🚀 Live Demo
+
+You can view and test the live project deployed on Vercel:
+
+**[Live Demo](https://umbrella-customizer-tool.vercel.app)**
+
+---
+
 ## Features
 
 - **Logo Preview:** Upload a `.png` or `.jpg` logo for an instant preview on the umbrella.
