@@ -1,0 +1,207 @@
+/* --- Basic Setup & Fonts --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* --- Preview Area (Left) --- */
+.preview-area {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#umbrella-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    z-index: 10;
+    transition: opacity 0.4s ease;
+}
+
+#logo-preview {
+    position: absolute;
+    bottom: 90px; /* Positioned based on your example image */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100px;
+    max-height: 50px;
+    object-fit: contain;
+    z-index: 11;
+    transition: opacity 0.4s ease;
+}
+
+#loader {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 20;
+    /* This sets the speed of one spin */
+    animation: spin 1.5s linear infinite;
+}
+
+/* --- Controls Area (Right) --- */
+.controls-area {
+    width: 400px;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.subheading {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #555;
+}
+
+.instructions {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* --- Color Swatches --- */
+.color-swatches {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    background-color: var(--swatch-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.swatch:not([disabled]):hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.swatch.active {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px var(--swatch-color), 0 6px 12px rgba(0,0,0,0.2);
+    border-color: #f0f0f0;
+}
+
+.swatch[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* --- Upload Button --- */
+#upload-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-sizing: border-box; /* Ensures padding doesn't break layout */
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#upload-button #upload-icon {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.4s ease;
+}
+
+#upload-text {
+    /* Styles for truncating long filenames */
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Theme Styling --- */
+
+/* Blue Theme (Default) */
+body.theme-blue { background-color: #f0f9ff; }
+.theme-blue #upload-button { background-color: #31a9e0; color: white; }
+.theme-blue #upload-button #upload-icon { filter: brightness(0) invert(1); }
+
+/* Pink Theme */
+body.theme-pink { background-color: #fff0f7; }
+.theme-pink #upload-button { background-color: #d0006f; color: white; }
+.theme-pink #upload-button #upload-icon { filter: brightness(0) invert(1); }
+
+/* Yellow Theme */
+body.theme-yellow { background-color: #fffef0; }
+.theme-yellow #upload-button { background-color: #fedb00; color: #333; }
+.theme-yellow #upload-button #upload-icon { filter: none; } /* Default black icon */
+
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* --- Animations --- */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 950px) {
+    .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .preview-area {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+    .controls-area {
+        width: 100%;
+        max-width: 450px;
+        text-align: center;
+    }
+    .color-swatches {
+        justify-content: center;
+    }
+    h1 {
+        font-size: 36px;
+    }
+}
